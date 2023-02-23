@@ -4,22 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="30">
+    <!-- <meta http-equiv="refresh" content="30"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <title>Server Status</title>
 </head>
 <body>
-    <div class="header">
-        <h1>Server and Directory Status</h1>
-    </div>
-    <br>
-    <h2>{{ s1_head }}</h2>
-    {% for detail in s1_cont %}
-        <p>{{ detail }}</p>
-    {% endfor %}
-    <br>
-    <h2>{{ s2_head }}</h2>
-    {% for detail in s2_cont %}
-        <p>{{ detail }}</p>
-    {% endfor %}
+    <section class="section">
+        <div class="container">
+            <nav class="navbar is-black">
+                <p>Server Dashboard</p>
+            </nav>
+            <br>
+            <div class="columns">
+                <div class="column">
+                        <h1>{{ svr_1.name }} : {{ svr_1.ip }}</h1>
+                        <h2>{{ svr_1.last_check }} | Server Up : {{ svr_1.avail }}</h2>
+                        {% for dirs in svr_1.dir %}
+                            <br>
+                            <p>Directory: {{ dirs[0] }} | Available: {{ dirs[1] }}</p>
+                        {% endfor %}
+                </div>
+                <div class="column">
+                    <h1>{{ svr_2.name }} : {{ svr_2.ip }}</h1>
+                    <h2>{{ svr_2.last_check }} | Server Up : {{ svr_2.avail }}</h2>
+                    {% for dirs in svr_2.dir %}
+                        <br>
+                        <p>Directory: {{ dirs[0] }} | Available: {{ dirs[1] }}</p>
+                    {% endfor %}
+            </div>
+            </div>
+        </div>
+
+    </section>
+
+    
 </body>
 </html>
